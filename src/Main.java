@@ -1,0 +1,83 @@
+import java.time.LocalTime;
+
+public class Main {
+    public static void main(String[] args) {
+
+//AGREGACJA
+//   - Album zawiera wiele Zdjęć
+//   - Zdjęcie ma: nazwę, rok wykonania
+//   - Zdjęcie ma atrybut opcjonalny: opis
+//   - Album powinien mieć metody:
+//    - Dodaj zdjęcie
+//    - Usuń zdjęcie
+//    - Policz zdjęcia
+//    - Zwróć listę zdjęć
+//   - Zdjęcie może być przeniesione do innego albumu
+//   - W main: stwórz albumy, dodaj zdjęcia, przenieś zdjęcie między albumami
+    System.out.println("Zadanie 1");
+    System.out.println();
+
+    Album familyAlbum = new Album("Family Album");
+    Album vacationAlbum = new Album("Vacation Album");
+
+    Photo familyPhoto = new Photo("Family Photo", 2020, "This is a family photo in Croatia");
+    Photo vacationPhoto = new Photo("Vacation", 2020);
+    Photo bielikiPhoto = new Photo("Bieliki", 2020, "Sonia Bielykova and Lukas Bielik");
+    Photo ciriAndLukas = new Photo("Ciri And Lukas", 2023);
+    Photo pineapplePhoto = new Photo("Pineapple", 2022);
+
+    familyAlbum.addPhoto(vacationPhoto);
+    familyAlbum.addPhoto(familyPhoto);
+    familyAlbum.addPhoto(bielikiPhoto);
+    familyAlbum.addPhoto(pineapplePhoto);
+
+    vacationAlbum.addPhoto(vacationPhoto);
+    vacationAlbum.addPhoto(familyPhoto);
+
+    System.out.println(vacationAlbum.countPhotos());
+    System.out.println(familyAlbum.countPhotos());
+
+    familyAlbum.deletePhoto(pineapplePhoto);
+    familyAlbum.addPhoto(ciriAndLukas);
+    vacationAlbum.addPhoto(pineapplePhoto);
+    System.out.println();
+
+    System.out.println(vacationAlbum.countPhotos());
+    System.out.println(familyAlbum.countPhotos());
+
+    System.out.println(familyAlbum.getAlbum());
+    System.out.println(vacationAlbum.getAlbum());
+
+    System.out.println();
+    System.out.println("Zadanie 2");
+    System.out.println();
+    //KOMPOZYCJA
+        //Polecenie: Zamodeluj tort weselny składający się z pięter.
+        //
+        //   - Tort składa się z wielu Pięter (ułożonych jedno na drugim)
+        //   - Tort ma opcjonalny atrybut: dedykacja (napis na torcie), obsłużony przez przeciążenie
+        //  konstruktora
+        //   - Tort ma datę przygotowania - ile godzin temu został zrobiony ma być wyliczane (nie
+        //  przechowywane)
+        //   - Piętra są tworzone TYLKO przez Tort (piętro tortu nie może istnieć bez tortu)
+        //   - WAŻNE: Piętro NIE ma publicznego konstruktora
+        //   - Piętro ma:
+        //    - Numer piętra (nadawany automatycznie od dołu: 1, 2,
+        Cake chocolateCake = new Cake("chocolate", LocalTime.of(14,0));
+        Cake vanilaCake = new Cake("vanila", LocalTime.of(16,0), "And they lived happly ever after");
+
+        chocolateCake.addFloor();
+        chocolateCake.addFloor();
+        chocolateCake.addFloor();
+
+        vanilaCake.addFloor();
+        vanilaCake.addFloor();
+
+        System.out.println(chocolateCake);
+        System.out.println(vanilaCake);
+
+
+
+
+}
+}
