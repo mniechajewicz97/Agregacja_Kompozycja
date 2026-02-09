@@ -62,19 +62,45 @@ public class Main {
         //   - Piętra są tworzone TYLKO przez Tort (piętro tortu nie może istnieć bez tortu)
         //   - WAŻNE: Piętro NIE ma publicznego konstruktora
         //   - Piętro ma:
-        //    - Numer piętra (nadawany automatycznie od dołu: 1, 2,
+        //    - Numer piętra (nadawany automatycznie od dołu: 1, 2, 3...)
+        //    - Średnica w cm
+        //    - Smak (czekoladowe, waniliowe, truskawkowe)
+        //   - Tort powinien mieć metody:
+        //    - addLayer(int diameter, String flavor) - tworzy nowe piętro
+        //    - removeTopLayer() - usuwa górne piętro (przestaje istnieć)
+        //    - Obliczanie całkowitej wysokości tortu (każde piętro = 8cm) - wyliczane
+        //    - Liczba pięter - wyliczane
+        //    - Zwracanie listy pięter (niemutowalnej!)
+        //   - W main pokaż:
+        //    - Tworzenie tortu (z dedykacją i bez)
+        //    - Dodawanie pięter do tortu (od największego na dole)
+        //    - Usuwanie górnego piętra
+        //    - Wyświetlanie całkowitej wysokości tortu
+        //    - Próba stworzenia piętra poza tortem (nie powinno być możliwe)
+
         Cake chocolateCake = new Cake("chocolate", LocalTime.of(14,0));
         Cake vanilaCake = new Cake("vanila", LocalTime.of(16,0), "And they lived happly ever after");
 
-        chocolateCake.addFloor();
-        chocolateCake.addFloor();
-        chocolateCake.addFloor();
+        chocolateCake.addLayer(12, "chocolate layer");
+        chocolateCake.addLayer(10, "chocolate layer");
+        chocolateCake.addLayer(6, "chocolate layer");
 
-        vanilaCake.addFloor();
-        vanilaCake.addFloor();
+        vanilaCake.addLayer(10, "vanila layer");
+        vanilaCake.addLayer(8, "vanila layer");
 
         System.out.println(chocolateCake);
         System.out.println(vanilaCake);
+        System.out.println();
+
+        System.out.println("Highness of the cake: " + chocolateCake.getHighness() + " centimeters");
+        System.out.println("Number od layers: " + chocolateCake.getLayers().size());
+        System.out.println("Highness of the cake: " + vanilaCake.getHighness()+ " centimeters");
+        System.out.println("Number od layers: " + vanilaCake.getLayers().size());
+
+        System.out.println();
+        chocolateCake.removeTopLayer();
+        System.out.println("Highness of the cake: " + chocolateCake.getHighness() + ", number od layers:  " +  chocolateCake.getLayers().size());
+
 
 
 
