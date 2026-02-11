@@ -7,8 +7,8 @@ public class Cake {
     private String flavor;
     private String dedication;
     private LocalTime startTime; // maciek mi pokazal te medote jakis czas temu wiec uzywam
-    private List<Cake_Layer> layers = new ArrayList<>();
-    private Cake_Layer cakeFloor;
+    private List<CakeLayer> layers = new ArrayList<>();
+    private CakeLayer cakeFloor;
     int diameter;
 
 
@@ -32,19 +32,19 @@ public class Cake {
         return Duration.between(startTime, LocalTime.now()); // tutaj czat podpowiedzial, ze tak mozna i w sumie spoko
     }
 
-    public List<Cake_Layer> getLayers() {
+    public List<CakeLayer> getLayers() {
         return layers;
     }
 
     public void addLayer(int diameter, String flavor) {
         int nextNumber = layers.size() + 1;           // oblicza numer piętra
-        Cake_Layer layer = new Cake_Layer(nextNumber); // tworzy nowe piętro WEWNĄTRZ tortu
+        CakeLayer layer = new CakeLayer(nextNumber); // tworzy nowe piętro WEWNĄTRZ tortu
         layers.add(layer);                             // dodaje do listy
     }
 
     public void removeTopLayer() {
         int topLayer = layers.size() - 1;
-        Cake_Layer layer = layers.get(topLayer);
+        CakeLayer layer = layers.get(topLayer);
         layers.remove(topLayer);
     }
 

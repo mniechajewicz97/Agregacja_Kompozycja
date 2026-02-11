@@ -1,7 +1,7 @@
-public class Cake_Layer {
+public class CakeLayer {
     private int number; // numer piętra
 
-    Cake_Layer(int number) {
+    CakeLayer(int number) {
         this.number = number;
     }
 
