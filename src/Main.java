@@ -1,4 +1,4 @@
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
@@ -78,11 +78,11 @@ public class Main {
         //    - Wyświetlanie całkowitej wysokości tortu
         //    - Próba stworzenia piętra poza tortem (nie powinno być możliwe)
 
-        Cake chocolateCake = new Cake("chocolate", LocalTime.of(14,0));
-        Cake vanilaCake = new Cake("vanila", LocalTime.of(16,0), "And they lived happly ever after");
+        Cake chocolateCake = new Cake("chocolate");
+        Cake vanilaCake = new Cake("vanila", "And they lived happly ever after");
 
-        chocolateCake.addLayer(12, "chocolate layer");
         chocolateCake.addLayer(10, "chocolate layer");
+        chocolateCake.addLayer(8,  "chocolate layer");
         chocolateCake.addLayer(6, "chocolate layer");
 
         vanilaCake.addLayer(10, "vanila layer");
@@ -92,17 +92,19 @@ public class Main {
         System.out.println(vanilaCake);
         System.out.println();
 
-        System.out.println("Highness of the cake: " + chocolateCake.getHighness() + " centimeters");
+        System.out.println("Height of the cake: " + chocolateCake.getHeight() + " centimeters");
         System.out.println("Number od layers: " + chocolateCake.getLayers().size());
-        System.out.println("Highness of the cake: " + vanilaCake.getHighness()+ " centimeters");
+        System.out.println("Height of the cake: " + vanilaCake.getHeight()+ " centimeters");
         System.out.println("Number od layers: " + vanilaCake.getLayers().size());
 
-        System.out.println();
+
         chocolateCake.removeTopLayer();
-        System.out.println("Highness of the cake: " + chocolateCake.getHighness() + ", number od layers:  " +  chocolateCake.getLayers().size());
+        System.out.println("Height of the cake: " + chocolateCake.getHeight() + ", number od layers:  " +  chocolateCake.getLayers().size());
 
+        System.out.println(chocolateCake.timePassed().toHours());
+        System.out.println(vanilaCake.timePassed().toMinutes());
 
-
+     //   CakeLayer applepie = new CakeLayer(1, 10, "applePie");  NIE DA SIE STWORZYC
 
 
 }
