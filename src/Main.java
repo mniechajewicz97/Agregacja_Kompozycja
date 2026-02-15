@@ -78,15 +78,15 @@ public class Main {
         //    - Wyświetlanie całkowitej wysokości tortu
         //    - Próba stworzenia piętra poza tortem (nie powinno być możliwe)
 
-        Cake chocolateCake = new Cake("chocolate");
-        Cake vanilaCake = new Cake("vanila", "And they lived happly ever after");
+        Cake chocolateCake = new Cake();
+        Cake vanilaCake = new Cake("And they lived happly ever after");
 
-        chocolateCake.addLayer(10, "chocolate layer");
-        chocolateCake.addLayer(8,  "chocolate layer");
-        chocolateCake.addLayer(6, "chocolate layer");
+        chocolateCake.addLayer(8, "chocolate layer");
+        chocolateCake.addLayer(6,  "chocolate layer");
+        chocolateCake.addLayer(4, "chocolate layer");
 
         vanilaCake.addLayer(10, "vanila layer");
-        vanilaCake.addLayer(8, "vanila layer");
+        vanilaCake.addLayer(12, "vanila layer");
 
         System.out.println(chocolateCake);
         System.out.println(vanilaCake);

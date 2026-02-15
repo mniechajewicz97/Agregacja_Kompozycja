@@ -4,27 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cake {
-    private String flavor;
     private String dedication;
     private LocalDateTime startTime;
     private List<CakeLayer> layers = new ArrayList<>();
 
-    public Cake(String flavor) {
-        this.flavor = flavor;
+    public Cake() {
         this.startTime = LocalDateTime.now();
 
     }
 
-    public Cake(String flavor, String dedication) {
-        this.flavor = flavor;
+    public Cake(String dedication) {
         this.startTime = LocalDateTime.now();
         this.dedication = dedication;
     }
 
-    private class CakeLayer {  //  NIE WIEM W SUMIE CZY TO MOZNA ZROBIC W TAKI SPOSOB
+    private class CakeLayer {
         private int number;
         private int diameter;
-        private String flavor; // tylko to jest na szaro ale jak usune to nie dziala CakeLayer
+        private String flavor;
 
         private CakeLayer(int number, int diameter, String flavor) {
             this.number = number;
@@ -42,7 +39,16 @@ public class Cake {
     }
 
     public void addLayer(int diameter, String flavor) {
-        int nextNumber = layers.size() + 1;       // oblicza pietro
+        if (!layers.isEmpty()) {
+            CakeLayer topLayer = layers.get(layers.size() - 1);
+
+            if (diameter > topLayer.diameter) {
+                System.out.println("Cannot add bigger layer on smaller one!");
+                return;
+            }
+        }
+
+        int nextNumber = layers.size() + 1;
         CakeLayer layer = new CakeLayer(nextNumber, diameter, flavor);
         layers.add(layer);
     }
@@ -60,11 +66,9 @@ public class Cake {
 
     public String toString() {
         if (dedication == null) {
-            return flavor + " cake," + " number of layers: " + layers.size();
+            return "Cake," + " number of layers: " + layers.size();
         } else {
-            return flavor + " cake," + " dedication: " + dedication + ", number of layers: " + layers.size();
+            return "Cake," + " dedication: " + dedication + ", number of layers: " + layers.size();
         }
     }
-
-
 }
