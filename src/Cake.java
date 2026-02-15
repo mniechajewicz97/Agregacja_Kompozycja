@@ -39,16 +39,11 @@ public class Cake {
     }
 
     public void addLayer(int diameter, String flavor) {
-        for (CakeLayer layer : layers) {
-            if (diameter > layer.diameter) {
-                System.out.println("Cannot add bigger layer on smaller one!");
-                return;
-            }
+        if (layers.isEmpty() || diameter <= layers.get(layers.size() - 1).diameter) {
+           layers.add(new CakeLayer(layers.size() + 1, diameter, flavor));
+        } else {
+            System.out.println("Cannot add bigger layer on smaller one!");
         }
-
-        int nextNumber = layers.size() + 1;
-        CakeLayer layer = new CakeLayer(nextNumber, diameter, flavor);
-        layers.add(layer);
     }
 
     public void removeTopLayer() {
